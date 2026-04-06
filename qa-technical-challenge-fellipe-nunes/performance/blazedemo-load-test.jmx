@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+
+<hashTree>
+
+<TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BlazeDemo Load Test">
+
+<boolProp name="TestPlan.functional_mode">false</boolProp>
+
+</TestPlan>
+
+<hashTree>
+
+<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Load Test Users">
+
+<stringProp name="ThreadGroup.num_threads">250</stringProp>
+
+<stringProp name="ThreadGroup.ramp_time">10</stringProp>
+
+<stringProp name="ThreadGroup.duration">60</stringProp>
+
+</ThreadGroup>
+
+<hashTree>
+
+<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Home">
+
+<stringProp name="HTTPSampler.domain">www.blazedemo.com</stringProp>
+
+<stringProp name="HTTPSampler.path">/</stringProp>
+
+<stringProp name="HTTPSampler.method">GET</stringProp>
+
+</HTTPSamplerProxy>
+
+<hashTree/>
+
+<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Find Flights">
+
+<stringProp name="HTTPSampler.domain">www.blazedemo.com</stringProp>
+
+<stringProp name="HTTPSampler.path">/reserve.php</stringProp>
+
+<stringProp name="HTTPSampler.method">POST</stringProp>
+
+</HTTPSamplerProxy>
+
+<hashTree/>
+
+<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Purchase Flight">
+
+<stringProp name="HTTPSampler.domain">www.blazedemo.com</stringProp>
+
+<stringProp name="HTTPSampler.path">/purchase.php</stringProp>
+
+<stringProp name="HTTPSampler.method">POST</stringProp>
+
+</HTTPSamplerProxy>
+
+<hashTree/>
+
+<ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate Purchase">
+
+<stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+
+<stringProp name="Assertion.test_type">2</stringProp>
+
+<stringProp name="Assertion.test_string">Thank you for your purchase</stringProp>
+
+</ResponseAssertion>
+
+<hashTree/>
+
+</hashTree>
+
+</hashTree>
+
+</hashTree>
+
+</jmeterTestPlan>
